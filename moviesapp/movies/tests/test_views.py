@@ -65,7 +65,7 @@ class TestMovieViews(TestCase):
 
     def test_create_err_title_exists(self):
         resp = self.client.post('/movies/create/', {
-            'title':'Testing in Production - The Movie',
+            'title':'Tight Deadline without Well Defined Requirements',
             'year':'2019',
             'rated':'PG-13',
             'released_on':'2019-03-08',
@@ -76,8 +76,8 @@ class TestMovieViews(TestCase):
             'updated_at':'2019-08-20T00:00:00+03:00'
         }, follow=True)
         self.assertContains(resp, 'The creation has failed')
-        self.assertFormError(resp, 'form', 'Title',
-                             'Movie with this Title already exists.')
+        self.assertFormError(resp, 'form', 'title',
+                             'Movie with this Movie\'s title already exists.')
 
     def test_update(self):
         resp = self.client.get('/movies/update/8/')
