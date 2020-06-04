@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% load static i18n %}
 
+{% block content %}
 <div class="jumbotron">
   <h1>{% blocktrans %}Welcome to Django Framework{% endblocktrans %}</h1>
   <p>
@@ -26,8 +27,7 @@
       </div>
       <div class="panel-body">
         <p>
-          {% blocktrans %}Django is under active development...{% endblocktrans
-          %}
+          {% blocktrans %}Django is under active development...{% endblocktrans %}
         </p>
       </div>
     </div>
@@ -62,3 +62,4 @@
     </div>
   </div>
 </div>
+{% endblock content %}
