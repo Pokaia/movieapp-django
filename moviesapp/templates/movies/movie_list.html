@@ -10,8 +10,12 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <!-- TODO: Add table columns -->
-      <th colspan="2"><b>Action</b></th>
+	  <th><!-- movie number --></th>
+	  <th><b>Title</b></th>
+	  <th><b>Release Date</b></th>
+	  <th><b>Rated</b></th>
+	  <th><b>Average Rating</b></th>
+      <th colspan="3"><b>Actions</b></th>
     </tr>
   </thead>
   <tbody>
@@ -21,9 +25,12 @@
 		  <a href="{{ movie.get_absolute_url }}">{{ movie.pk }}</a>
       </td>
       <td>{{ movie.title }}</td>
-      <!-- TODO: Render more movie properties and make sure action links work -->
+	  <td>{{ movie.released_on }}</td>
+	  <td>{{ movie.rated }}</td>
+	  <td></td>
       <td><a href="{% url 'movies:update' movie.pk %}">Edit</a></td>
       <td><a href="{% url 'movies:delete' movie.pk %}">Delete</a></td>
+      <td><a href="">Rate</a></td>
     </tr>
     {% endfor %}
     <tr>
