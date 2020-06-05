@@ -11,6 +11,10 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
     url(r'^movies/', include('moviesapp.movies.urls', namespace='movies')),
 
+    url(r'^api/', include('moviesapp.api.urls', namespace='api')),
+
+    url(r'^api-auth/', include('rest_framework.urls')),
+
     url(settings.ADMIN_URL, admin.site.urls),  # {% url 'admin:index' %}
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -28,7 +28,10 @@ DJANGO_APPS = (
     # Admin
     'django.contrib.admin',
 )
-THIRD_PARTY_APPS = ()
+
+THIRD_PARTY_APPS = (
+    'rest_framework',
+)
 
 LOCAL_APPS = (
     'moviesapp.movies.apps.MoviesConfig',
