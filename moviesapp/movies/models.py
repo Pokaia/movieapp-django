@@ -32,6 +32,7 @@ class Movie(models.Model):
 class Rating(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='ratings')
     rating = models.PositiveIntegerField(default=0, validators=[MaxValueValidator(100)])
+    comment = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.movie.title + u':' + str(self.rating)
