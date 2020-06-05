@@ -19,3 +19,10 @@ class MovieAPIView(generics.RetrieveAPIView, generics.UpdateAPIView, generics.De
 class RatingCreateAPIView(generics.CreateAPIView):
     queryset = Rating.objects.all()
     serializer_class = serializers.RatingSerializer
+
+class RatingGetAPIView(generics.ListAPIView):
+    lookup_field = 'movie_id'
+    serializer_class = serializers.RatingSerializer
+
+    def get_queryset(self):
+        return Rating.objects.all().filter(movie_id=self.kwargs['movie_id'])

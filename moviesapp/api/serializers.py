@@ -40,3 +40,4 @@ class RatingSerializer(serializers.ModelSerializer):
         model = Rating
         view_name = 'rating'
         fields = '__all__'
+        lookup_field = 'movie_id'
