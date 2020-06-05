@@ -3,6 +3,8 @@ from django.core.urlresolvers import reverse
 from django.core.validators import RegexValidator
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.core.validators import MaxValueValidator
+from django.db.models import Avg
 
 
 class Movie(models.Model):
@@ -16,10 +18,20 @@ class Movie(models.Model):
     plot = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
-    # Todo: add Rating models
 
     def __str__(self):
-        return self.title
+        return str(self.title)
 
     def get_absolute_url(self):
         return reverse('movies:detail', kwargs={'id': self.pk})
+
+    def get_rating(self):
+        average = self.ratings.all().aggregate(Avg('rating'))['rating__avg']
+        return average
+
+class Rating(models.Model):
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='ratings')
+    rating = models.PositiveIntegerField(default=0, validators=[MaxValueValidator(100)])
+
+    def __str__(self):
+        return self.movie.title + u':' + str(self.rating)

@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^create/$', view=views.MovieCreateView.as_view(), name='create'),
     url(r'^update/(?P<id>[\d\-]+)/$', view=views.MovieUpdateView.as_view(), name='update'),
     url(r'^delete/(?P<id>[\d\-]+)/$', view=views.MovieDeleteView.as_view(), name='delete'),
+    url(r'^rate/(?P<mid>[\d\-]+)/$', view=views.MovieRateCreateView.as_view(), name='rate'),
 ]
