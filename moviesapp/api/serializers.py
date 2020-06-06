@@ -8,6 +8,7 @@ class MovieListSerializer(serializers.HyperlinkedModelSerializer):
         model = Movie
         view_name = 'movie-list'
         fields = [
+            'id',
             'title',
             'year',
             'rated',
@@ -24,6 +25,7 @@ class MovieSerializer(serializers.HyperlinkedModelSerializer):
         model = Movie
         view_name = 'movie-detail'
         fields = [
+            'id',
             'title',
             'year',
             'rated',
@@ -35,7 +37,7 @@ class MovieSerializer(serializers.HyperlinkedModelSerializer):
         ]
 
 class RatingSerializer(serializers.ModelSerializer):
-    rating = serializers.IntegerField(max_value=100, min_value=0)
+    rating = serializers.IntegerField(max_value=5, min_value=0)
     class Meta:
         model = Rating
         view_name = 'rating'
