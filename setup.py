@@ -14,6 +14,10 @@ setup(
         'nose==1.3.7',
         'django-nose==1.4.4',
         'nosedjango==1.0.13'
+        'django-filter==2.0.0',
+        'djangorestframework==3.9.4',
+        'Markdown==3.1.1',
+        'django-cors-headers==3.0.2',
     ],
     test_suite='tests',
     tests_require=['nose'],
